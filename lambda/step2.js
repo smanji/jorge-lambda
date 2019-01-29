@@ -3,6 +3,15 @@ exports.handler = async (event) => {
     let id = null;
     try {
         id = event.pathParameters.id;
+        if (!Number.isInteger(id)) {
+            const response = {
+                statusCode: 400,
+                body: JSON.stringify({
+                    msg: 'id not an integer'
+                }),
+            };
+            return response;
+        }
     } catch (e) {
         const response = {
             statusCode: 400,
