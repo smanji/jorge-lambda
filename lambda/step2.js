@@ -2,7 +2,7 @@ exports.handler = async (event) => {
     // assert that input id is provided
     let id = null;
     try {
-        id = event.pathParameters.id;
+        id = Number(event.pathParameters.id);
         if (!Number.isInteger(id)) {
             const response = {
                 statusCode: 400,
